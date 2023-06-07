@@ -13,10 +13,11 @@ namespace cicli
         public string Lastname { get; set; }
         public string Age { get; set; }
         public string Address { get; set; }
-        public List<string> lists =new List<string>();  
-        
-        
-        
+
+        public List<string> lists = new List<string>();
+
+
+
 
 
         /// <summary>
@@ -118,12 +119,12 @@ namespace cicli
             do
             {
 
-            Console.WriteLine("Insert age");
-            Age =Console.ReadLine();
+                Console.WriteLine("Insert age");
+                Age = Console.ReadLine();
                 int inegers;
-                
-                if (!int.TryParse(Age,out inegers))
-                    
+
+                if (!int.TryParse(Age, out inegers))
+
                 {
                     Console.WriteLine("Letters are not allowed");
                     continue;
@@ -134,37 +135,26 @@ namespace cicli
                 }
             } while (true);
 
-            
+
             lists.Add(Age);
         }
 
-        /// <summary>
-        /// Method to show the result
-        /// </summary>
-        /// 
-        public void Result()
-        {
-
-            //Asking user to continue
-            
-            
-
-            }
         /// <summary>
         /// this method show the entire list created by the user input
         /// </summary>
         public void list()
         {
             Console.WriteLine("\n Here's your list");
-            if(lists.Capacity != 0)
+            if (lists.Capacity != 0)
             {
 
-            foreach (string s in lists)
-            {
-                
-                Console.WriteLine(s);
-            
-            }
+                foreach (string s in lists)
+                {
+
+                    Console.WriteLine("*" + s);
+
+
+                }
             }
             else
             {
@@ -176,8 +166,6 @@ namespace cicli
             Console.WriteLine();
         }
 
-       
-        
 
         /// <summary>
         /// Method to show the real data with greetings
@@ -196,28 +184,26 @@ namespace cicli
             {
                 Console.WriteLine("Good Afternoon user");
             }
-            
+
         }
 
-        public void SearchByName()
+
+        //Search methods
+        public void SearchByAddress()
         {
             Console.WriteLine("Enter name to search:");
-            string searchName = Console.ReadLine();
+            string searchAddress = Console.ReadLine();
 
-            List<string> foundNames = lists.FindAll(n => n.Equals(searchName, StringComparison.OrdinalIgnoreCase));
+            List<string> foundAddress = lists.FindAll(n => n.Equals(searchAddress, StringComparison.OrdinalIgnoreCase));
 
-            if (foundNames.Count > 0)
+            if (foundAddress.Count > 0)
             {
-                Console.WriteLine("Found names:");
-                foreach (string name in foundNames)
-                {
-                    Console.WriteLine(name);
-                    
-                }
+                Console.WriteLine("Address found");
+                
             }
             else
             {
-                Console.WriteLine("No names found.");
+                Console.WriteLine("No Address found.");
             }
 
             Console.WriteLine("Press any key to continue.");
@@ -225,20 +211,22 @@ namespace cicli
             Console.WriteLine();
         }
 
-        public void SearchByAge()
+        public void SearchByLastname()
         {
             Console.WriteLine("Enter name to search:");
-            string searchAge = Console.ReadLine();
+            string searchLastname = Console.ReadLine();
 
-            List<string> foundAges = lists.FindAll(n => n.Equals(searchAge, StringComparison.OrdinalIgnoreCase));
+            List<string> foundLastname = lists.FindAll(n => n.Contains(searchLastname));
 
-            if (foundAges.Count > 0)
+            if (foundLastname.Count > 0)
             {
-                Console.WriteLine("Found Ages:");
-                foreach (string age in foundAges)
+                Console.WriteLine("Lastname found");
+                Console.WriteLine("--------------------");
+                foreach (var lastname in foundLastname)
                 {
-                    Console.WriteLine(age);
+                    Console.WriteLine(lastname);
                 }
+
             }
             else
             {
