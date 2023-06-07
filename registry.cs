@@ -46,6 +46,7 @@ namespace cicli
                 Console.WriteLine("Insert Name");
 
                 Name = Console.ReadLine();
+
                 if (Name.Length <= 2)
                 {
                     Console.WriteLine("Name must contain more than 2 characters");
@@ -71,7 +72,8 @@ namespace cicli
                 Console.WriteLine("Insert Lastname");
 
                 Lastname = Console.ReadLine();
-                if (Lastname.Length <= 2)
+               
+                if (Lastname.Length <= 2 )
                 {
                     Console.WriteLine("Lastname must contain more than 2 characters");
                     continue;
