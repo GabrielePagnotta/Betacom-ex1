@@ -4,10 +4,12 @@ Registry registro = new Registry();
 
 
 List<Car> list = new List<Car>();
+List<Registry> lists = new List<Registry>();
 
 for (int i = 0; i < 22; i++)
 {
-Car CarRegistry = new Car();  
+    Car CarRegistry = new Car();  
+    Hobby hb = new Hobby();
     Console.Clear();
     registro.welcome();
     Console.WriteLine("1.Register \n2.View\n3.Search\n4.Exit\n5.Car");
@@ -23,6 +25,11 @@ Car CarRegistry = new Car();
             registro.InputLastname();
             registro.InputAddress();
             registro.InputAge();
+            registro.CF=Guid.NewGuid().ToString();
+            hb.GetHobbies();
+            hb.CFRegistry = registro.CF;
+            registro.Hobbys.Add(hb);
+            lists.Add(registro);
             Console.WriteLine("\n Do you want to continue? Y/N \n");
             string output = Console.ReadLine();
             if (output == "y" || output == "Y")
@@ -35,6 +42,7 @@ Car CarRegistry = new Car();
                     registro.InputLastname();
                     registro.InputAddress();
                     registro.InputAge();
+                    lists.Add(registro);
                     Console.WriteLine("\n Do you want to continue? Y/N \n");
                     string output2 = Console.ReadLine();
                     if (output2 == "y" || output2 == "Y")
@@ -46,35 +54,113 @@ Car CarRegistry = new Car();
                         break;
                     }
                 } while (true);
-
-
             }
 
 
         }
         else if (input == 2)
         {
-            registro.list();
+            Console.WriteLine("\n Here's your list");
+            if (lists.Capacity != 0)
+            {
+
+                foreach (Registry s in lists)
+                {
+
+                    Console.WriteLine("*" + s.ToString());
+
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("info not found");
+            }
+
+            Console.WriteLine("press any key to return back");
+            Console.ReadKey();
+            Console.WriteLine();
 
         }
         else if (input == 3)
         {
 
             Console.WriteLine("select one field:");
-            Console.WriteLine("1.Address \n2.Lastname\nOr press other key to go back");
+            Console.WriteLine("1.Address \n2.Lastname\n3.Hobby\nOr press other key to go back");
             string inputsearch = Console.ReadLine();
             Console.Clear();
             if (inputsearch == "1")
             {
                 Console.WriteLine("Search by Address");
                 Console.WriteLine("------------------------");
-                registro.SearchByAddress();
+                Console.WriteLine("Enter name to search:");
+                string searchAddress = Console.ReadLine();
+
+                List<Registry> foundAddress = new List<Registry>();
+
+                foundAddress = lists.FindAll(h => h.Address.Contains(searchAddress));
+                if (foundAddress.Count > 0)
+                {
+                    foreach (var address in foundAddress)
+                    {
+                        Console.WriteLine(address);
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("No Address found.");
+                }
+
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadKey();
+                Console.WriteLine();
             }
             else if (inputsearch == "2")
             {
                 Console.WriteLine("Search by Lastname");
                 Console.WriteLine("------------------------");
-                registro.SearchByLastname();
+                Console.WriteLine("Enter name to search:");
+                string searchLastname = Console.ReadLine();
+
+                List<Registry> foundLastname = new List<Registry>();
+
+                foundLastname = lists.FindAll(a => a.Lastname.Contains(searchLastname));
+                if (foundLastname.Count>0)
+                {
+                    
+                    foreach (var lastname in foundLastname)
+                    {
+                        Console.WriteLine(lastname.ToString());
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("No Lastnames found.");
+                }
+
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadKey();
+                Console.WriteLine();
+            }else if(inputsearch == "3")
+            {
+                Console.WriteLine("Enter hobby to search:");
+                string searchhobby = Console.ReadLine();
+                
+                 registro.Hobbys.FindAll(g => g.HobbyName.Contains(searchhobby));
+                if (registro.Hobbys.Count > 0)
+                {
+                    foreach (var gg in lists)
+                    {
+                        foreach (var item in gg.Hobbys)
+                        {
+                            Console.WriteLine($"Name:{gg.Name},Lastname:{gg.Lastname},Hobby:{item.HobbyName},CF:{item.CFRegistry}");
+                        }
+                    }
+                    
+                }else { Console.WriteLine("nothing found"); }
+                Console.ReadKey();
             }
 
 

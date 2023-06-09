@@ -13,11 +13,11 @@ namespace cicli
         public string Lastname { get; set; }
         public string Age { get; set; }
         public string Address { get; set; }
+        public string CF { get; set; }
+        public List<Hobby> Hobbys { get; set; } =new List<Hobby>();
 
-        public List<string> lists = new List<string>();
-
-
-
+        
+        
 
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace cicli
                 }
             } while (true);
 
-            lists.Add(Name);
+            
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace cicli
                     break;
                 }
             } while (true);
-            lists.Add(Lastname);
+            
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace cicli
                     break;
                 }
             } while (true);
-            lists.Add(Address);
+           
         }
 
         /// <summary>
@@ -138,36 +138,9 @@ namespace cicli
             } while (true);
 
 
-            lists.Add(Age);
+            
         }
-
-        /// <summary>
-        /// this method show the entire list created by the user input
-        /// </summary>
-        public void list()
-        {
-            Console.WriteLine("\n Here's your list");
-            if (lists.Capacity != 0)
-            {
-
-                foreach (string s in lists)
-                {
-
-                    Console.WriteLine("*" + s);
-
-
-                }
-            }
-            else
-            {
-                Console.WriteLine("info not found");
-            }
-
-            Console.WriteLine("press any key to return back");
-            Console.ReadKey();
-            Console.WriteLine();
-        }
-
+        
 
         /// <summary>
         /// Method to show the real data with greetings
@@ -190,55 +163,14 @@ namespace cicli
         }
 
 
-        //Search methods
-        public void SearchByAddress()
+        public override string ToString()
         {
-            Console.WriteLine("Enter name to search:");
-            string searchAddress = Console.ReadLine();
-
-            List<string> foundAddress = lists.FindAll(n => n.Equals(searchAddress, StringComparison.OrdinalIgnoreCase));
-
-            if (foundAddress.Count > 0)
-            {
-                Console.WriteLine("Address found");
-                
-            }
-            else
-            {
-                Console.WriteLine("No Address found.");
-            }
-
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey();
-            Console.WriteLine();
+            
+            return $"name:{Name}, Lastname:{Lastname},Address:{Address}, Age:{Age} CF:{CF}";
         }
 
-        public void SearchByLastname()
-        {
-            Console.WriteLine("Enter name to search:");
-            string searchLastname = Console.ReadLine();
 
-            List<string> foundLastname = lists.FindAll(n => n.Contains(searchLastname));
 
-            if (foundLastname.Count > 0)
-            {
-                Console.WriteLine("Lastname found");
-                Console.WriteLine("--------------------");
-                foreach (var lastname in foundLastname)
-                {
-                    Console.WriteLine(lastname);
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("No Ages found.");
-            }
-
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey();
-            Console.WriteLine();
-        }
 
 
     }
