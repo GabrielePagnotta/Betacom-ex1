@@ -10,19 +10,28 @@ namespace cicli.Files
 {
     public class FileManager
     {
-        public void GetImport(string path,string filename,List<Car>listacar) 
+        public string Randomcolornumber()
         {
-            string[] arraycolor = { "Black", "Yellow", "Blue", "Green" };
-            Random rnd = new Random();
-            int Random = rnd.Next(0, 3);
-            string randomcolor = arraycolor[Random++];
+            string[] arraycolor = { "Black", "Yellow", "Blue", "Green","Purple","Red","Silver","Pearl","Gold" };
+            for (int i = 0; i < 5; i++)
+            {
+                Random rnd = new Random();
+                int Random = rnd.Next(0, arraycolor.Length);
+                string randomcolor = arraycolor[Random];
+                return randomcolor;
+
+            }
+            return string.Empty;
+        }
+        public void GetImport(string path, string filename, List<Car> listacar)
+        {
             string directory = path + filename;
-            
+
             string[] file = File.ReadAllLines(directory);
-            
+
             foreach (string line in file)
             {
-                Console.WriteLine(file);
+
                 string[] split = line.Split(':');
                 listacar.Add(new Car
                 {
@@ -31,18 +40,19 @@ namespace cicli.Files
                     Model = split[2],
                     EngineType = split[3],
                     Displacement = split[4],
-                    Color = randomcolor
+                    Color = Randomcolornumber()
                 });
             }
             foreach (var item in listacar)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"Serial Number:{item.FinalSerial}, Brand:{item.Brand}, Model:{item.Model}, Enginetype:{item.EngineType}, Displacement:{item.Displacement}, Color:{item.Color}");
+
             }
         }
 
-        public void GetImport(List<Car>listacar)
+        public void GetImport(List<Car> listacar)
         {
-            
+
             string askList;
             string path = $"C:\\Users\\Betacom\\source\\repos\\cicli\\Files\\carsTest.txt";
             string[] bon = File.ReadAllLines(path);
@@ -51,17 +61,17 @@ namespace cicli.Files
             foreach (var item in bon)
             {
                 string[] listsplitted = item.Split(':');
-              
-                    listacar.Add(new Car
-                    {
-                        FinalSerial = listsplitted[0],
-                        Brand = listsplitted[1],
-                        Model= listsplitted[2],
-                        EngineType = listsplitted[3],
-                        Displacement = listsplitted[4]
 
-                    });
-                
+                listacar.Add(new Car
+                {
+                    FinalSerial = listsplitted[0],
+                    Brand = listsplitted[1],
+                    Model = listsplitted[2],
+                    EngineType = listsplitted[3],
+                    Displacement = listsplitted[4]
+
+                });
+
             }
             foreach (var item in listacar)
             {
@@ -71,6 +81,6 @@ namespace cicli.Files
 
         }
 
-       
+
     }
 }
