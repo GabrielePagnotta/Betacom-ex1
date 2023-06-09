@@ -1,22 +1,28 @@
 ﻿using cicli;
+using cicli.Files;
+using System.IO;
 
 Registry registro = new Registry();
 
 
 List<Car> list = new List<Car>();
 List<Registry> lists = new List<Registry>();
+List<string> FileList = new List<string>();
+List<Car> listacar = new List<Car>();
 
 for (int i = 0; i < 22; i++)
+
 {
     Car CarRegistry = new Car();  
     Hobby hb = new Hobby();
+    FileManager fileManager = new FileManager();
+
     Console.Clear();
     registro.welcome();
     Console.WriteLine("1.Register \n2.View\n3.Search\n4.Exit\n5.Car");
     Console.WriteLine("");
     Console.WriteLine("please, select a number:");
-    try
-    {
+    
         int input = Convert.ToInt32(Console.ReadLine());
         if (input == 1)
         {
@@ -25,7 +31,7 @@ for (int i = 0; i < 22; i++)
             registro.InputLastname();
             registro.InputAddress();
             registro.InputAge();
-            registro.CF=Guid.NewGuid().ToString();
+            registro.CF = Guid.NewGuid().ToString();
             hb.GetHobbies();
             hb.CFRegistry = registro.CF;
             registro.Hobbys.Add(hb);
@@ -126,9 +132,9 @@ for (int i = 0; i < 22; i++)
                 List<Registry> foundLastname = new List<Registry>();
 
                 foundLastname = lists.FindAll(a => a.Lastname.Contains(searchLastname));
-                if (foundLastname.Count>0)
+                if (foundLastname.Count > 0)
                 {
-                    
+
                     foreach (var lastname in foundLastname)
                     {
                         Console.WriteLine(lastname.ToString());
@@ -143,12 +149,13 @@ for (int i = 0; i < 22; i++)
                 Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
                 Console.WriteLine();
-            }else if(inputsearch == "3")
+            }
+            else if (inputsearch == "3")
             {
                 Console.WriteLine("Enter hobby to search:");
                 string searchhobby = Console.ReadLine();
-                
-                 registro.Hobbys.FindAll(g => g.HobbyName.Contains(searchhobby));
+
+                registro.Hobbys.FindAll(g => g.HobbyName.Contains(searchhobby));
                 if (registro.Hobbys.Count > 0)
                 {
                     foreach (var gg in lists)
@@ -158,8 +165,9 @@ for (int i = 0; i < 22; i++)
                             Console.WriteLine($"Name:{gg.Name},Lastname:{gg.Lastname},Hobby:{item.HobbyName},CF:{item.CFRegistry}");
                         }
                     }
-                    
-                }else { Console.WriteLine("nothing found"); }
+
+                }
+                else { Console.WriteLine("nothing found"); }
                 Console.ReadKey();
             }
 
@@ -176,19 +184,19 @@ for (int i = 0; i < 22; i++)
 
             Console.Clear();
             Console.WriteLine("What do you want to do here?");
-            Console.WriteLine("1.register a car\n2.show all car registered\n3.search a car");
+            Console.WriteLine("1.register a car\n2.show all car registered\n3.search a car\n4.Import cars");
             int InputCar = Convert.ToInt32(Console.ReadLine());
-                
+
             if (InputCar == 1)
             {
                 //creating a random and incremental serial number
                 Random rnd = new Random();
                 int Random = rnd.Next(0, 6);
-                string[] SerialLetter = { "A", "B", "C", "D","E","F","G" };
+                string[] SerialLetter = { "A", "B", "C", "D", "E", "F", "G" };
                 int repeat = 1;
                 int SerialNumber = i + repeat;
 
-                CarRegistry.FinalSerial = SerialLetter[Random + 1]+ SerialLetter[Random] + SerialNumber;
+                CarRegistry.FinalSerial = SerialLetter[Random + 1] + SerialLetter[Random] + SerialNumber;
                 Console.WriteLine(CarRegistry.FinalSerial);
                 //Console.WriteLine("AA" + CarRegistry.SerialNumber);
 
@@ -196,9 +204,10 @@ for (int i = 0; i < 22; i++)
                 CarRegistry.Carasaking();
                 list.Add(CarRegistry);
                 Console.WriteLine("-----------------------------------");
-                
 
-            }else if(InputCar == 2)
+
+            }
+            else if (InputCar == 2)
             {
                 //section to show the all information inserted
                 Console.Clear();
@@ -210,7 +219,7 @@ for (int i = 0; i < 22; i++)
                     Console.WriteLine(item.ToString());
                 }
 
-                if(list.Count == 0)
+                if (list.Count == 0)
                 {
                     Console.WriteLine("No Cars in list");
                 }
@@ -218,7 +227,7 @@ for (int i = 0; i < 22; i++)
                 Console.ReadKey();
 
             }
-            else if(InputCar == 3)
+            else if (InputCar == 3)
             {
                 //search by brand's name section
                 Console.Clear();
@@ -226,11 +235,11 @@ for (int i = 0; i < 22; i++)
                 //input to search 
                 Console.WriteLine("Enter the Brand's name to search:");
                 string searchCar = Console.ReadLine();
-                
 
-                List<Car>lista = new List<Car>();
-                
-                
+
+                List<Car> lista = new List<Car>();
+
+
                 //checking if the input contains any elements in the list
                 if (!string.IsNullOrEmpty(searchCar))
                 {
@@ -247,15 +256,15 @@ for (int i = 0; i < 22; i++)
                 Console.ReadKey();
                 Console.WriteLine();
             }
+            else if (InputCar == 4)
+            {
+                fileManager.GetImport("C:\\Users\\Betacom\\source\\repos\\cicli\\Files\\", "carsTest.txt",listacar);
 
+                Console.ReadKey();
+
+            }
         }
-    }
-    catch (Exception)
-    {
-        Console.Clear();
-        Console.WriteLine("** please insert a number **");
-
-    }
+   
 
 
 

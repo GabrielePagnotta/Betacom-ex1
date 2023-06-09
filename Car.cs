@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace cicli
 {
-    internal class Car
+    public class Car
     {
         public object FinalSerial { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public CarEngine EngineType { get; set; }
+        public string EngineType { get; set; }
         public string Displacement { get; set; }
         public string Color { get; set; }
 
@@ -66,16 +66,11 @@ namespace cicli
 
                 Console.WriteLine("Enginetype: Diesel,Gasoline,Hybrid,Electric");
                  string engineinput = Console.ReadLine();
-                if (Enum.TryParse(engineinput, true ,out CarEngine enginetype))
-                {
-                    EngineType = enginetype;
+                
+                    EngineType = engineinput;
                     break;
-                }
-                else
-                {
-                    Console.WriteLine("fuel not in the list");
-                    continue;
-                }
+                
+                
             } while (true);
 
             //asking Displacement
@@ -128,7 +123,7 @@ namespace cicli
         public override string ToString()
         {
             Console.Clear();
-            return $"SerialNumber: {FinalSerial},Brand:{Brand}, Manufacturer: {(int)EngineType}, Model: {Model}, Displacement:{Displacement}cc, Color:{Color}";
+            return $"SerialNumber: {FinalSerial},Brand:{Brand}, Manufacturer: {EngineType}, Model: {Model}, Displacement:{Displacement}cc, Color:{Color}";
         }
     }
 }

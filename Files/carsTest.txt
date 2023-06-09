@@ -1,0 +1,7 @@
+AA1:Bmw:X4i:Ibrida:2000cc
+AA2:Saab:93 Td:TurboDiesel:1900cc
+AA3:Mercedes:C200i:Ibrida:1800cc
+AA4:Porsche:911 4S:Benzina:3000cc
+AA5:Mercedes:SLC AMG:Benzina:3500cc
+AA6:Dacia:Duster:Benzina:1500cc
+AA7:Lexus:XJ5:Ibrida:2500cc

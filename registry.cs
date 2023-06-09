@@ -14,7 +14,7 @@ namespace cicli
         public string Age { get; set; }
         public string Address { get; set; }
         public string CF { get; set; }
-        public List<Hobby> Hobbys { get; set; } =new List<Hobby>();
+        public List<Hobby> Hobbys { get; set; } = new List<Hobby>();
 
         
         
