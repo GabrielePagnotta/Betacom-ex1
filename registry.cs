@@ -26,10 +26,14 @@ namespace cicli
         public void welcome()
         {
             //Welcome graphic
+            Console.Clear();
             Console.WriteLine("****************************************************************");
             Console.WriteLine("MAIN MENU");
             DateNow();
             Console.WriteLine("****************************************************************");
+            Console.WriteLine("1.Register \n2.View\n3.Search\n4.Exit\n5.Car");
+            Console.WriteLine("");
+            Console.WriteLine("please, select a number:");
 
         }
 
@@ -160,6 +164,108 @@ namespace cicli
                 Console.WriteLine("Good Afternoon user");
             }
 
+        }
+
+        public void RegistryList(List<Registry> lists)
+        {
+            Console.WriteLine("\n Here's your list");
+            if (lists.Capacity != 0)
+            {
+
+                foreach (Registry s in lists)
+                {
+
+                    Console.WriteLine("*" + s.ToString());
+
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("info not found");
+            }
+
+            Console.WriteLine("press any key to return back");
+            Console.ReadKey();
+            Console.WriteLine();
+        }
+
+        public void SearchByAddress(List<Registry> lists)
+        {
+            Console.WriteLine("Search by Address");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Enter name to search:");
+            string searchAddress = Console.ReadLine();
+
+            List<Registry> foundAddress = new List<Registry>();
+
+            foundAddress = lists.FindAll(h => h.Address.Contains(searchAddress));
+            if (foundAddress.Count > 0)
+            {
+                foreach (var address in foundAddress)
+                {
+                    Console.WriteLine(address);
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No Address found.");
+            }
+
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
+            Console.WriteLine();
+        }
+
+        public void SearchByLastname(List<Registry> lists)
+        {
+
+            Console.WriteLine("Search by Lastname");
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Enter name to search:");
+            string searchLastname = Console.ReadLine();
+
+            List<Registry> foundLastname = new List<Registry>();
+
+            foundLastname = lists.FindAll(a => a.Lastname.Contains(searchLastname));
+            if (foundLastname.Count > 0)
+            {
+
+                foreach (var lastname in foundLastname)
+                {
+                    Console.WriteLine(lastname.ToString());
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No Lastnames found.");
+            }
+
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
+            Console.WriteLine();
+        }
+        public void SearchByHobbies(List<Hobby> Hobbys,List<Registry>lists)
+        {
+            Console.WriteLine("Enter hobby to search:");
+            string searchhobby = Console.ReadLine();
+
+            Hobbys.FindAll(g => g.HobbyName.Contains(searchhobby));
+            if (Hobbys.Count > 0)
+            {
+                foreach (var gg in lists)
+                {
+                    foreach (var item in gg.Hobbys)
+                    {
+                        Console.WriteLine($"Name:{gg.Name},Lastname:{gg.Lastname},Hobby:{item.HobbyName},CF:{item.CFRegistry}");
+                    }
+                }
+
+            }
+            else { Console.WriteLine("nothing found"); }
+            Console.ReadKey();
         }
 
 
