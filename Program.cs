@@ -18,6 +18,7 @@ for (int i = 0; i < 22; i++)
     Car CarRegistry = new Car();
     Hobby hb = new Hobby();
     FileManager fileManager = new FileManager();
+    Employee employee = new Employee();
 
 
     registro.welcome();
@@ -123,6 +124,12 @@ for (int i = 0; i < 22; i++)
             }
             
             break;
-    }
+    case 6:
+            
+            employee.GetEmployee();
+            
+            break;
+    };
     break;
+
 }

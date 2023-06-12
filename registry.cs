@@ -9,6 +9,7 @@ namespace cicli
 {
     class Registry
     {
+        public string ID { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public string Age { get; set; }
@@ -31,7 +32,7 @@ namespace cicli
             Console.WriteLine("MAIN MENU");
             DateNow();
             Console.WriteLine("****************************************************************");
-            Console.WriteLine("1.Register \n2.View\n3.Search\n4.Exit\n5.Car");
+            Console.WriteLine("1.Register \n2.View\n3.Search\n4.Exit\n5.Car\n6.Import Employee");
             Console.WriteLine("");
             Console.WriteLine("please, select a number:");
 

@@ -25,7 +25,9 @@ namespace cicli.Files
         }
         public void GetImport(string path, string filename, List<Car> listacar)
         {
-            string directory = path + filename;
+
+            string directory = Path.Combine(path, filename);
+
 
             string[] file = File.ReadAllLines(directory);
 
@@ -80,6 +82,7 @@ namespace cicli.Files
             // C:\Users\Betacom\source\repos\cicli\Files\carsTest.txt
 
         }
+
 
 
     }

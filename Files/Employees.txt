@@ -1,0 +1,4 @@
+I001;Mario Rossi;Impiegato;Ufficio Acquisti
+P001;Sigismondo Della Rotula;Operario;Assemblaggio Motore
+F021;Erminia Satolla;Impiegato;Ufficio Controllo Qualità
+F022;Eloisia Significata;Operaio;Addetta Servizio Mensa
