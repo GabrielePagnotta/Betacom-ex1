@@ -18,14 +18,14 @@ namespace cicli.Files
         {
             List<Employee> employees = new List<Employee>();
             Console.WriteLine("seleziona un file:");
-            string path = "C:\\Users\\Betacom\\source\\repos\\cicli\\Files\\";
+            string path = "C:\\Users\\gabri\\Source\\Repos\\GabrielePagnotta\\Betacom-ex1\\Files";
             string file = Console.ReadLine();
-            string pattern = Path.Combine(path,file);
+            string pattern = Path.Combine(path, file);
             string[] showfile = File.ReadAllLines(pattern);
-           
-                
-                foreach (var elem in showfile)
-                {
+
+
+            foreach (var elem in showfile)
+            {
                 employees.Add(new Employee
                 {
                     Id = elem.Split(";")[0],
@@ -33,48 +33,60 @@ namespace cicli.Files
                     Category = elem.Split(";")[2],
                     Task = elem.Split(";")[3],
                     Vacations = new List<VacationEmployee>()
-                    });
+                });
 
-                }
+            }
 
-            List<VacationEmployee> Vacations = new List<VacationEmployee>();
-             string path2 = "C:\\Users\\Betacom\\source\\repos\\cicli\\Files\\";
-             string file2 = Console.ReadLine();
-             string pattern2 = Path.Combine(path2,file2);
-             string[] showfile2 = File.ReadAllLines(pattern2);
 
-            foreach (var item in employees)
+            string path2 = "C:\\Users\\gabri\\Source\\Repos\\GabrielePagnotta\\Betacom-ex1\\Files";
+            string file2 = Console.ReadLine();
+            string pattern2 = Path.Combine(path2, file2);
+            string[] showfile2 = File.ReadAllLines(pattern2);
+            foreach (Employee emp in employees)
             {
-                foreach (var item1 in showfile2)
+                emp.Vacations = new List<VacationEmployee>();
+
+                foreach (var item in showfile2)
                 {
-                    
-                    if(item1.Split(";").Count() > 2)
+
+                    if (item.Split(';').Count() > 2)
                     {
-                        if (item1.Split(";")[2].ToUpper() == item.Id.ToUpper())
+                        if (item.Split(';')[2] == emp.Id)
                         {
-                            Vacations.Add(new VacationEmployee
+                            emp.Vacations.Add(new VacationEmployee
                             {
-                                Data = item1.Split(";")[0],
-                                Vacations = item1.Split(";")[1],
-                                Code = item1.Split(";")[2]
+                                Data = item.Split(';')[0],
+                                Vacations = item.Split(';')[1],
+                                Code = item.Split(";")[2]
                             });
                         }
                     }
+
                 }
-                
             }
-            //da capire perchè non stampa in modo corretto
+
+
+           
             foreach (Employee item in employees)
             {
+                Console.WriteLine();
                 Console.Write($"Name:{item.Fullname}");
                 Console.WriteLine();
-                foreach (var item1 in Vacations)
-                {
-                    
-                    Console.Write($"{item1.Data},{item1.Vacations}");
-                    Console.WriteLine();
-                    
 
+                if (item.Vacations.Count() > 0)
+                {
+                    foreach (var item1 in item.Vacations)
+                    {
+                        Console.Write($"{item1.Data},{item1.Vacations}");
+                        Console.WriteLine();
+
+
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("nothing found");
                 }
             }
 
@@ -82,7 +94,7 @@ namespace cicli.Files
 
 
         }
-        
+
 
 
     }
