@@ -1,0 +1,134 @@
+[
+  {
+    "Fullname": "Mario Rossi",
+    "Category": "Impiegato",
+    "Task": "Ufficio Acquisti",
+    "Vacations": [
+      {
+        "Data": "01/10/2022",
+        "Vacations": "Pre Festivo",
+        "Code": "I001"
+      },
+      {
+        "Data": "02/10/2022",
+        "Vacations": "Pre Festivo",
+        "Code": "I001"
+      },
+      {
+        "Data": "03/10/2022",
+        "Vacations": "Ufficio",
+        "Code": "I001"
+      },
+      {
+        "Data": "04/10/2022",
+        "Vacations": "Ufficio",
+        "Code": "I001"
+      },
+      {
+        "Data": "05/10/2022",
+        "Vacations": "Ferie",
+        "Code": "I001"
+      },
+      {
+        "Data": "06/10/2022",
+        "Vacations": "Ufficio",
+        "Code": "I001"
+      },
+      {
+        "Data": "07/10/2022",
+        "Vacations": "Ufficio",
+        "Code": "I001"
+      }
+    ]
+  },
+  {
+    "Fullname": "Sigismondo Della Rotula",
+    "Category": "Operario",
+    "Task": "Assemblaggio Motore",
+    "Vacations": [
+      {
+        "Data": "01/10/2022",
+        "Vacations": "Pre Festivo",
+        "Code": "P001"
+      },
+      {
+        "Data": "02/10/2022",
+        "Vacations": "Pre Festivo",
+        "Code": "P001"
+      },
+      {
+        "Data": "03/10/2022",
+        "Vacations": "Ufficio",
+        "Code": "P001"
+      },
+      {
+        "Data": "04/10/2022",
+        "Vacations": "Ufficio",
+        "Code": "P001"
+      },
+      {
+        "Data": "05/10/2022",
+        "Vacations": "Ufficio",
+        "Code": "P001"
+      },
+      {
+        "Data": "06/10/2022",
+        "Vacations": "Trasferta",
+        "Code": "P001"
+      },
+      {
+        "Data": "07/10/2022",
+        "Vacations": "Trasferta",
+        "Code": "P001"
+      }
+    ]
+  },
+  {
+    "Fullname": "Erminia Satolla",
+    "Category": "Impiegato",
+    "Task": "Ufficio Controllo Qualit\u00E0",
+    "Vacations": []
+  },
+  {
+    "Fullname": "Eloisia Significata",
+    "Category": "Operaio",
+    "Task": "Addetta Servizio Mensa",
+    "Vacations": [
+      {
+        "Data": "01/10/2022",
+        "Vacations": "Pre Festivo",
+        "Code": "F022"
+      },
+      {
+        "Data": "02/10/2022",
+        "Vacations": "Pre Festivo",
+        "Code": "F022"
+      },
+      {
+        "Data": "03/10/2022",
+        "Vacations": "Sede",
+        "Code": "F022"
+      },
+      {
+        "Data": "04/10/2022",
+        "Vacations": "Sede",
+        "Code": "F022"
+      },
+      {
+        "Data": "05/10/2022",
+        "Vacations": "Sede",
+        "Code": "F022"
+      },
+      {
+        "Data": "06/10/2022",
+        "Vacations": "Sede",
+        "Code": "F022"
+      },
+      {
+        "Data": "07/10/2022",
+        "Vacations": "Sede",
+        "Code": "F022"
+      }
+    ]
+  }
+]

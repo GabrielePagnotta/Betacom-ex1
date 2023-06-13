@@ -1,8 +1,10 @@
-﻿using System;
+﻿using cicli.Files;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace cicli
@@ -170,21 +172,16 @@ namespace cicli
         public void RegistryList(List<Registry> lists)
         {
             Console.WriteLine("\n Here's your list");
-            if (lists.Capacity != 0)
-            {
-
-                foreach (Registry s in lists)
+            
+                foreach (var s in lists)
                 {
 
-                    Console.WriteLine("*" + s.ToString());
+                    Console.WriteLine($"name:{s.Name}, Lastname:{s.Lastname},Address:{s.Address}, Age:{s.Age} CF:{s.CF}");
 
 
                 }
-            }
-            else
-            {
-                Console.WriteLine("info not found");
-            }
+            
+            
 
             Console.WriteLine("press any key to return back");
             Console.ReadKey();
@@ -235,7 +232,8 @@ namespace cicli
 
                 foreach (var lastname in foundLastname)
                 {
-                    Console.WriteLine(lastname.ToString());
+                   string dfg = JsonSerializer.Serialize(foundLastname, new JsonSerializerOptions { WriteIndented = true });
+                    Console.WriteLine(dfg);
                 }
 
             }
@@ -247,6 +245,7 @@ namespace cicli
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
             Console.WriteLine();
+
         }
         public void SearchByHobbies(List<Hobby> Hobbys,List<Registry>lists)
         {

@@ -4,13 +4,12 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-Registry registro = new Registry();
 
 
 List<Car> list = new List<Car>();
-List<Registry> lists = new List<Registry>();
 List<string> FileList = new List<string>();
 List<Car> listacar = new List<Car>();
+List<Registry> lists = new List<Registry>();
 
 for (int i = 0; i < 22; i++)
 
@@ -18,10 +17,11 @@ for (int i = 0; i < 22; i++)
     Car CarRegistry = new Car();
     Hobby hb = new Hobby();
     FileManager fileManager = new FileManager();
-    Employee employee = new Employee();
 
 
+    Registry registro = new Registry();
     registro.welcome();
+    Employee employee = new Employee();
 
 
     int input = Convert.ToInt32(Console.ReadLine());
@@ -31,15 +31,16 @@ for (int i = 0; i < 22; i++)
         case 1:
             do
             {
-                registro.InputName();
-                registro.InputLastname();
-                registro.InputAddress();
-                registro.InputAge();
-                registro.CF = Guid.NewGuid().ToString();
+                Registry user = new Registry();
+                user.InputName();
+                user.InputLastname();
+                user.InputAddress();
+                user.InputAge();
+                user.CF = Guid.NewGuid().ToString();
                 hb.GetHobbies();
-                hb.CFRegistry = registro.CF;
-                registro.Hobbys.Add(hb);
-                lists.Add(registro);
+                hb.CFRegistry = user.CF;
+                user.Hobbys.Add(hb);
+                lists.Add(user);
                 Console.WriteLine("\n Do you want to continue? Y/N \n");
                 string output = Console.ReadLine();
                 if (output == "y" || output == "Y")
@@ -49,10 +50,11 @@ for (int i = 0; i < 22; i++)
                 }
                 else
                 {
+                
                     break;
                 }
             } while (true);
-            break;
+            continue;
         case 2:
             registro.RegistryList(lists);
             break;
@@ -68,6 +70,7 @@ for (int i = 0; i < 22; i++)
             else if (inputsearch == "2")
             {
                 registro.SearchByLastname(lists);
+                
             }
             else if (inputsearch == "3")
             {
